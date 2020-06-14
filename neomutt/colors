@@ -1,0 +1,119 @@
+#color file for Neomutt
+#author: Frank Zimmermann
+#date: 20190926
+#colors are give by name or256 Xterm colors:
+#https://web.archive.org/web/20190712111427/https://jonasjacek.github.io/colors/
+
+#Let's set some defaults
+set status_format='-%r-NeoMutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? \
+Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---'
+set index_format='%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s'
+set sort=threads
+set sort_aux=last-date-received
+# 'status color' can take up to 2 extra parameters
+# color status foreground background [ regex [ num ]]
+# 0 extra parameters
+# Set the default color for the entire status line
+color status blue white
+
+# Set the color for a matching pattern
+# color status foreground background regex
+# Highlight New, Deleted, or Flagged emails
+color status brightred white '(New|Del|Flag):[0-9]+'
+
+# Highlight mailbox ordering if it's different from the default
+# First, highlight anything (*/*)
+color status color214 default '\([^)]+\[^)]+\)'
+# Then override the color for one specific case
+color status default default '\(threads/last-date-received\)'
+
+# Highlight the contents of the []s but not the [] themselves
+color status color212 default '\[([^]]+)\]' 1
+# The '1' refers to the first regex submatch, which is the inner
+# part in ()s
+# Highlight the mailbox
+
+#basic colors ---------------------------------------------------------
+color normal        white        default        
+color error         color124     color11
+color tilde         color235     default        
+color message       color37      default        
+color markers       color160     default        
+color attachment    color254     default
+color status        color184     color235        
+color indicator     color234     color111 
+color search        color61      default
+color tree          color46      default                                    # arrow in threads
+
+
+# Entire index line
+color index default default '.*'
+
+# Author name, %A %a %F %L %n
+# Give the author column a dark grey background
+color index_author default color234 '.*'
+
+# Number of messages in a collapsed thread, %M
+color index_collapsed default color93
+
+# Date field
+color index_date color76 default
+
+# Message label, %y %Y
+color index_label default color88
+
+# Message number, %C
+color index_number color194 color234
+
+# Message size, %c %l
+color index_size cyan color94
+
+#collapes threads
+color index         color141        default        "~v~(!~N)"                  # collapsed thread with no unread
+color index         color136        default        "~v~(~N)"                   # collapsed thread with some unread
+color index         color64         default        "~N~v~(~N)"                 # collapsed thread with unread parent
+
+
+## Highlights inside the body of a message.
+## URLs
+color body brightgreen default "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+color body brightgreen default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono body bold "(http|ftp|news|telnet|finger)://[^ \"\t\r\n]*"
+mono body bold "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color signature     color247        color234
+
+## Email addresses.
+color body brightgreen color234 "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+## Header
+color header color10 color234 "^from:"
+color header color10 color234 "^to:"
+color header color10 color234 "^cc:"
+color header color10 color234 "^date:"
+color header color11 color234 "^newsgroups:"
+color header color11 color234 "^reply-to:"
+color header brightcyan color234 "^subject:"
+color header red color234 "^x-spam-rule:"
+color header color10 color234 "^x-mailer:"
+color header color11 color234 "^message-id:"
+color header color11 color234 "^Organization:"
+color header color11 color234 "^Organisation:"
+color header color11 color234 "^User-Agent:"
+
+## Coloring quoted text - coloring the first 7 levels
+color quoted cyan color234
+color quoted1 color11 color234
+color quoted2 red color234
+color quoted3 green color234
+color quoted4 cyan color234
+color quoted5 color11 color234
+color quoted6 red color234
+color quoted7 green color234
+
+##Side bar
+
+# Color to give mailboxes containing new mail
+color sidebar_new color226 default
+
+# Color to give mailboxes containing no unread mail
+color sidebar_unread color136 default

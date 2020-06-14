@@ -1,0 +1,16 @@
+##this is an eample file for each mail account
+## Send options.
+set spoolfile = "+account/Inbox"
+set record = "+account/Inbox/sent"
+set postponed = "+account/Inbox/drafts"
+set realname = "Frank"
+set from = "ME@account.de"
+set hostname = "account.de"
+#set signature="account signature file"
+set sendmail = "/usr/bin/msmtp -a account"
+
+#some mailing lists i subscribed
+subscribe linux-l@mlists.in-berlin.de
+subscribe *@lists.fsfe.org
+subscribe *@archlinux.org
+subscribe linux@lug-owl.de

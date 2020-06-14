@@ -1,0 +1,42 @@
+# Set default values for all following accounts.
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        ~/.msmtp.log
+
+# gmail
+account        gmail
+host           smtp.gmail.com
+port           587
+from           MYGMAIL_ACCOUNT@gmail.com
+user           MYGMAIL_ACCOUNT
+passwordeval   "secret-tool lookup username MYGMAIL_ACCOUNT@gmail.com repo gmail"
+
+# freenet
+account        freenet
+tls_starttls   on
+port	       587
+#auth	       plain
+host           mx.freenet.de
+from           MYFREENET_ACCOUNT@freenet.de
+user 	       MYFREENET_ACCOUNT@freenet.de
+passwordeval   "secret-tool lookup username MYFREENET_ACCOUNT@freenet.de repo freenet"
+
+# webde
+account		webde	
+host		smtp.web.de
+from		MYWEBDE_ACCOUNT@web.de
+user		MYWEBDE_ACCOUNT
+passwordeval    "secret-tool lookup username MYWEBDE_ACCOUNT@web.de repo webde"
+
+# T-Online
+account		tonline
+host		securesmtp.t-online.de
+port		465
+from		MYTONLINE_ACCOUNT@t-online.de
+user		MYTONLINE_ACCOUNT@t-online.de
+passwordeval	"secret-tool lookup username MYTONLINE_ACCOUNT@t-online.de repo tonline"
+
+# Set a default account
+account default : gmail 

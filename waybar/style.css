@@ -1,0 +1,120 @@
+window#waybar {
+    border:        none;
+    border-radius: 0;
+    font-family:   "Ärzte Sans Roman";
+    font-size:     12px;
+    box-shadow:    none;
+    text-shadow:   none;
+    transition-duration: 0s;
+    color:      rgba(217, 216, 216, 1);
+    background: rgba(0, 0, 0, 0.76);
+}
+
+window#waybar.solo {
+    background: rgb(35, 31, 32);
+}
+
+#workspaces {
+    margin: 0 5px;
+}
+
+#workspaces button {
+    padding:    0 5px;
+    color:      rgba(217, 216, 216, 0.4);
+}
+
+#workspaces button.visible {
+    color:      rgba(217, 216, 216, 1);
+}
+
+#workspaces button.focused {
+    border-top: 3px solid rgba(217, 216, 216, 1);
+    border-bottom: 3px solid rgba(217, 216, 216, 0);
+}
+
+#workspaces button.urgent {
+    color:      rgba(238, 46, 36, 1);
+}
+
+#custom-cmus {
+    margin:     0px 0px 0px 10px;
+    padding: 0 5px;
+    border-top: 3px solid rgba(217, 216, 216, 0.5);
+    border-bottom: 3px solid rgba(217, 216, 216, 0.5);
+    background: #1793d1;
+    color: #333333;
+}
+
+#idle_inhibitor {
+	 border: 5px solid rgba(192, 192, 192, 0.5);
+	 margin: 0px 10px 0px 5px;
+	 background: #1793d1;
+	 color: #333333;
+}
+
+#backlight,
+#disk,
+#cpu,
+#clock,
+#pulseaudio {
+	 margin: 0px 10px 0px 5px;
+	 border-left: 2px solid rgba(192, 192, 192, 0.5);
+	 border-right: 2px solid rgba(192, 192, 192, 0.5);
+	 background: #1793d1;
+	 color: #333333;
+}
+
+#memory.warning,
+#disk.warning,
+#cpu.critical,
+#battery.warning {
+   color:       rgba(255, 210, 4, 1);
+}
+
+#memory.critical,
+#disk.critical,
+#cpu.critical,
+#battery.critical {
+    color:      rgba(238, 46, 36, 1);
+}
+
+#battery.charging {
+    color:      rgba(192, 192, 192, 1);
+}
+
+#disk.warning {
+    color:      rgba(255, 210, 4, 1);
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+#network.disconnected {
+    background: red;
+    color: yellow;
+}
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    border-bottom: 3px solid #ffffff;
+}
+
+#workspaces button.focused {
+    border-bottom: 3px solid #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}

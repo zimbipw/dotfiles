@@ -1,0 +1,120 @@
+IMAPAccount gmail
+# Address to connect to
+Host imap.gmail.com
+User MYGMAIL_ACCOUNT@gmail.com
+# To store the password in an encrypted file use PassCmd instead of Pass
+PassCmd "secret-tool lookup username MYGMAIL_ACCOUNT@gmail.com repo gmail"
+# Use SSL
+SSLType IMAPS
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+# Remote storage
+IMAPStore gmail-remote
+Account gmail
+
+# Local storage
+MaildirStore gmail-local
+Path ~/Mail/gmail/
+Inbox ~/Mail/gmail/Inbox
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+# Exclude everything under the internal [Gmail] folder, except the interesting folders
+#Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+# Or include everything
+Patterns *
+# Automatically create missing mailes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+IMAPAccount freenet
+# Address to connect to
+Host mx.freenet.de
+User MYFREENET_ACCOUNT@freenet.de
+# To store the password in an encrypted file use PassCmd instead of Pass
+PassCmd "secret-tool lookup username MYFREENET_ACCOUNT@freenet.de repo freenet"
+# Use SSL
+SSLType IMAPS
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/imap.gmail.com.pem
+#CertificateFile ~/.cert/Equifax_Secure_CA.pem
+
+IMAPStore freenet-remote
+Account freenet
+
+MaildirStore freenet-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/Mail/freenet/
+Inbox ~/Mail/freenet/Inbox
+
+Channel freenet
+Master :freenet-remote:
+Slave :freenet-local:
+# Or include everything
+Patterns *
+# Automatically create missing gmailes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+
+IMAPAccount webde 
+# Address to connect to
+Host imap.web.de
+User MYWEBDE_ACCOUNT@web.de
+PassCmd "secret-tool lookup username MYWEBDE_ACCOUNT@web.de repo webde"
+# Use SSL
+SSLType IMAPS
+# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore webde-remote
+Account webde
+
+MaildirStore webde-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/Mail/webde/
+Inbox ~/Mail/webde/Inbox
+
+Channel webde
+Master :webde-remote:
+Slave :webde-local:
+# Or include everything
+Patterns *
+# Automatically create missing gmailes, both locally and on the server
+Create Both
+# Save the synchronization state files in the relevant directory
+SyncState *
+
+
+IMAPAccount tonline
+# Address to connect to
+Host secureimap.t-online.de
+User MYTONLINE_ACCOUNT@t-online.de
+PassCmd "secret-tool lookup username MYTONLINE_ACCOUNT@t-online.de repo tonline"
+# Use SSL
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore tonline-remote
+Account tonline
+
+MaildirStore tonline-local
+Subfolders Verbatim
+Path ~/Mail/tonline/
+Inbox ~/Mail/tonline/Inbox
+
+Channel tonline
+Master :tonline-remote:
+Slave :tonline-local:
+Patterns *
+Create Both
+SyncState *
